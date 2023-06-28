@@ -1,4 +1,5 @@
-import React from "react";
+import ContactRow from "./ContactRow";
+import { useState } from "react";
 
 const dummyContacts = [
     { id: 1, name: "R2-D2", phone: "222-222-2222", email: "r2d2@droids.com" },
@@ -7,7 +8,7 @@ const dummyContacts = [
   ];
 
 export default function ContactList() { 
-
+    const [contacts, setContacts] = useState(dummyContacts);
     return ( 
           <table>
             <thead>
@@ -23,6 +24,10 @@ export default function ContactList() {
               </tr>
               {
                  // Map over data here
+                 contacts.map((contact) => {
+                    return <ContactRow key={contact.id} contact={contact} />
+                 })
+
                }
             </tbody>
           </table>
